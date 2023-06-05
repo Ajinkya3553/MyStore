@@ -1,0 +1,287 @@
+﻿@page
+@model MyStore.Pages.Stats.SalaryStatsModel
+@{
+}
+@{
+	int index = 0;
+}
+
+<h2> Salary Stats </h2>
+<div class="card-group">
+		<div class="col-4 card">
+			<div class="card-header">
+				<h3 class="card-title">Highest Salary</h3>
+			</div>
+			<div class="card-body">
+				<h3 class="card-text">@Model.highestSalary</h3>
+			</div>
+		</div>
+
+		<div class="col-4 card">
+			<div class="card-header">
+				<h3 class="card-title">Average Salary</h3>
+			</div>
+			<div class="card-body">
+				<h3 class="card-text">@Model.averageSalary</h3>
+			</div>
+		</div>
+
+		<div class="col-4 card">
+			<div class="card-header">
+				<h3 class="card-title">Lowest Salary</h3>
+			</div>
+			<div class="card-body">
+				<h3 class="card-text">@Model.lowestSalary</h3>
+			</div>
+		</div>
+</div>
+
+<h2 class="mt-4">Other Stats</h2>
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Employees starting with A</h3>
+	</div>
+	<div class="card-body">
+		
+		<ol>
+			@foreach(var item in Model.startingWithA)
+			{
+					<li style="font-size: 25px">@item</li>
+			}
+		</ol>
+		@{
+			index = 0;
+		}
+		
+	</div>
+</div>
+
+
+<div class="card mt-4">
+	<div class="card-header">
+		<h3 class="card-title">Employees living in @Model.cityName</h3>
+	</div>
+	<div class="card-body">
+		
+		@foreach(var item in Model.sameAddress)
+		{
+			index++;
+			<h4>@index )</h4>
+			<h4> Name: &nbsp; @item.Key</h4>
+			<h4> Email: &nbsp; @item.Value</h4>
+			@if (index < Model.sameAddressUsingProcedure.Count)
+			{
+				<hr />
+			}
+		}
+		@{
+			index = 0;
+		}
+	</div>
+</div>
+
+<h4 class="mt-4">Using Stored Procedure</h4>
+
+<div class="card mt-3">
+	<div class="card-header">
+		<h3 class="card-title">Clients living in @Model.cityName</h3>
+	</div>
+	<div class="card-body">
+
+		@foreach (var item in Model.sameAddressUsingProcedure)
+		{
+			index++;
+			<h4>@index )</h4>
+			<h4> Name: &nbsp; @item.Key</h4>
+			<h4> Email: &nbsp; @item.Value</h4>
+			@if(index < Model.sameAddressUsingProcedure.Count)
+			{
+				<hr />
+			}
+		}
+		@{
+			index = 0;
+		}
+	</div>
+</div>
+
+<h4 class="my-4">Salary in table</h4>
+
+<table class="table table-bordered">
+	<thead>
+		<tr class="" style="background-color:lightgoldenrodyellow">
+			<th></th>
+			<th>Highest Salary</th>
+			<th>Average Salary</th>
+			<th>Lowest Salary</th>
+		</tr>
+	</thead>
+	<tbody style="background-color:lightyellow">
+		<tr>
+			<th>Salary</th>
+			<td>@Model.highestSalary</td>
+			<td>@Model.averageSalary</td>
+			<td>@Model.lowestSalary</td>
+		</tr>
+		<tr>
+			<th>Employees</th>
+			<td>
+				@foreach(var item in Model.employeesWithHighestSalaryList)
+				{
+					index++;
+					<h6>@index) &nbsp; @item</h6>
+				}
+				@{
+					index = 0;
+				}
+			</td>
+			<td>-</td>
+			<td>
+				@foreach (var item in Model.employeesWitLowestSalaryList)
+				{
+					index++;
+					<h6>@index) &nbsp; @item</h6>
+				}
+				@{
+					index = 0;
+				}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4 class="my-4">Total years completed in the organization</h4>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th style="width:5%">Index</th>
+			<th style="width:15%">Employee ID</th>
+			<th style="width:25%">Name</th>
+			<th style="width:20%">Salary</th>
+			<th style="width:15%">Age</th>
+			<th style="width:20%">Years Completed</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.totalYearsCompletedTableInfoList)
+		{
+			index++;
+			<tr>
+				<td>@index</td>
+				<td>@item.employeeID</td>
+				<td>@item.name</td>
+				<td>@item.salary</td>
+				<td>@item.age</td>
+				<td>@item.years</td>
+			</tr>
+		}
+		@{
+			index = 0;
+		}
+	</tbody>
+</table>
+
+
+@*  Card elements with same height*@
+@*<section class="bg-light pt-5 pb-5 shadow-sm">
+	<div class="container">
+		<div class="row pt-5">
+			<div class="col-12">
+				<h3 class="text-uppercase border-bottom mb-4">Equal height Bootstrap 5 cards example</h3>
+			</div>
+		</div>
+		<div class="row">
+			<!--ADD CLASSES HERE d-flex align-items-stretch-->
+			<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+				<div class="card">
+					<div class="card-header d-flex flex-column">
+						<h3 class="card-title">Highest Salary</h3>
+					</div>
+					<div class="card-body d-flex flex-column">
+						<h3 class="card-text">@Model.highestSalary</h3>
+					</div>
+					<div class="card-footer d-flex flex-column">
+						@foreach (var item in Model.employeesWithHighestSalaryList)
+						{
+							<h5>@item</h5>
+						}
+					</div>
+				</div>
+			</div>
+			<!--ADD CLASSES HERE d-flex align-items-stretch-->
+			<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+				<div class="card">
+					<div class="card-header d-flex flex-column">
+						<h3 class="card-title">Average Salary</h3>
+					</div>
+					<div class="card-body d-flex flex-column">
+						<h3 class="card-text">@Model.averageSalary</h3>
+					</div>
+					<div class="card-footer d-flex flex-column">
+						<h5>-</h5>
+					</div>
+				</div>
+			</div>
+			<!--ADD CLASSES HERE d-flex align-items-stretch-->
+			<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+				<div class="card">
+					<div class="card-header d-flex flex-column">
+						<h3 class="card-title">Lowest Salary</h3>
+					</div>
+					<div class="card-body d-flex flex-column">
+						<h3 class="card-text">@Model.lowestSalary</h3>
+					</div>
+					<div class="card-footer d-flex flex-column">
+						@foreach (var item in Model.employeesWitLowestSalaryList)
+						{
+							<h5>@item</h5>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>*@
+
+
+
+
+
+	@*temp*@
+	@*<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Highest Salary</h3>
+		</div>
+
+		<div class="card-body">
+			<h3 class="card-text">@Model.highestSalary</h3>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Average Salary</h3>
+		</div>
+
+		<div class="card-body">
+			<h3 class="card-text">@Model.averageSalary</h3>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">Lowest Salary</h3>
+		</div>
+
+		<div class="card-body">
+			<h3 class="card-text">@Model.lowestSalary</h3>
+		</div>
+	</div>*@
+
+
+@*Employee ID
+Designation
+Location
+Project Name
+Project Manager*@

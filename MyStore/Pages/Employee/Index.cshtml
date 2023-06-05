@@ -1,0 +1,55 @@
+﻿@page
+@model MyStore.Pages.Employee.IndexModel
+@{
+}
+
+<br />
+<h2>List of Employees</h2>
+<div>
+	<a class="btn btn-primary btn-sm mt-3" style="width:200px" href="/Employee/Create">
+		<i class="bi bi-plus-square"></i> &nbsp; Add New Employee
+	</a>
+</div>
+
+<table class="table mt-2">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Address</th>
+			<th>Salary</th>
+			<th>Created at</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			int count = 0;
+		}
+		@foreach(var item in Model.listEmployeesInfo)
+		{
+			count++;
+			<tr>
+				<td>@count</td>
+				<td>@item.name</td>
+				<td>@item.email</td>
+				<td>@item.phone</td>
+				<td>@item.address</td>
+				<td>@item.salary</td>
+				<td>@item.created_at</td>
+				<td>
+					<a class="btn btn-primary btn-sm" style="width:100px" href="/Employee/Edit?id=@item.id">
+						<i class="bi bi-pencil-square"></i> &nbsp; Edit
+					</a>
+					&nbsp;
+					<a class="btn btn-danger btn-sm" style="width:100px" href="/Employee/Delete?id=@item.id">
+						<i class="bi bi-trash"></i> &nbsp; Delete
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+
+</table>

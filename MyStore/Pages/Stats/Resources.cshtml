@@ -1,0 +1,110 @@
+﻿@page
+@model MyStore.Pages.Stats.ResourcesModel
+
+<h2 class="text-center">Employee Resources</h2>
+
+<br />
+<div class="text-end">
+	<a class="btn btn-primary btn-sm" href="/Stats/AllocateResources">Allocate Resources</a>
+</div>
+<div>
+	<h3>Mouse</h3>
+	<hr />
+	<form method="post">
+		<select name="mouseName">
+			<option selected disabled>--Select a mouse--</option>
+			<option value="Logitech g102">Logitech g102</option>
+			<option value="Viper Mini">Viper Mini</option>
+			<option value="HP 650">HP 650</option>
+		</select>
+		&nbsp;
+		<input type="submit" value="Search" />
+		&nbsp;
+		<a asp-page="Resources"> Get all the records</a>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>PRN</th>
+					<th>Mouse</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int count = 0;
+				}
+				@foreach (var item in Model.mouseUsers)
+				{
+					count++;
+					<tr>
+						<td>@count</td>
+						<td>@item.name</td>
+						<td>@item.phone</td>
+						<td>@item.address</td>
+						<td>@item.prn</td>
+						<td>@item.mouse</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+<br />
+<div>
+	<h3>Laptop</h3>
+	<hr />
+	<form method="post">
+		<select name="laptopName">
+			<option selected disabled>--Select a laptop--</option>
+			<option value="DELL LATITUDE 4340">DELL LATITUDE 4340</option>
+			<option value="DELL LATITUDE 4110">DELL LATITUDE 4110</option>
+			<option value="HP 403">HP 403</option>
+			<option value="Chromebook 1">Chromebook 1</option>
+		</select>
+		&nbsp;
+		<input type="submit" value="Search" />
+		&nbsp;
+		<a asp-page="Resources"> Get all the records</a>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>PRN</th>
+					<th>Laptop</th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					int count2 = 0;
+				}
+				@foreach (var item in Model.laptopUsers)
+				{
+					count2++;
+					<tr>
+						<td>@count2</td>
+						<td>@item.name</td>
+						<td>@item.phone</td>
+						<td>@item.address</td>
+						<td>@item.prn</td>
+						<td>@item.laptop</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		@if (Model.isLpatopListEmpty == true)
+		{
+			<h4 class="text-center">No records found</h4>
+		}
+	</form>
+</div>
+

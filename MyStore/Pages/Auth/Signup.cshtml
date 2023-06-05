@@ -1,0 +1,60 @@
+﻿@page
+@model MyStore.Pages.Auth.SignupModel
+@{
+}
+
+<br />
+<h2>Sign Up</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type="button" class="btn-close" data-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+<form method="post">
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Username</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="username" value="@Model.signupCreds.username" />
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Password</label>
+		<div class="col-sm-6">
+			<input type="password" class="form-control" name="password" value="@Model.signupCreds.password" />
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Confirm Password</label>
+		<div class="col-sm-6">
+			<input type="password" class="form-control" name="confirmPassword" value="@Model.signupCreds.confirmPassword" />
+		</div>
+	</div>
+
+	@if (Model.successMessage.Length > 0)
+	{
+		<div class="row-mb-3">
+			<div class="col-sm-9">
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>@Model.successMessage</strong>
+					<button type="button" class="btn-close"></button>
+				</div>
+			</div>
+		</div>
+	}
+
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 d-grid">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="col-sm-3 d-grid">
+			<a class="btn btn-outline-primary" href="/Auth/Login" role="button">Cancel</a>
+		</div>
+	</div>
+
+</form>
