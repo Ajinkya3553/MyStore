@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
-
+using MyStore.Pages.Models;
 namespace MyStore.Pages.Employee
 {
     public class IndexModel : PageModel
@@ -50,29 +50,5 @@ namespace MyStore.Pages.Employee
 
     }
 
-    public class EmployeeInfo
-    {
-        public string id;
-        public string name;
-        public string email;
-        public string phone;
-        public string address;
-        public int salary;
-        public int employeeID;
-        public string created_at;
-    }
-
-    public class EmployeeInsertInfo
-    {
-		public string id;
-		public string name;
-		public string email;
-		public string phone;
-		public string address;
-		public int salary;
-		public int employeeID;
-		public string created_at;
-        public DateTime joingingDate;
-        public DateTime birthdate;
-	}
+    
 }

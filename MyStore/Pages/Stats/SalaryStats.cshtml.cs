@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using MyStore.Pages.Models;
 
 namespace MyStore.Pages.Stats
 {
@@ -290,42 +291,7 @@ namespace MyStore.Pages.Stats
 
 		}
     }
-
-	public class MouseUserInfo
-	{
-		public string name;
-		public string phone;
-		public string address;
-		public int prn;
-		public string mouse;
-	}
-
-	public class LaptopUserInfo
-	{
-		public string name;
-		public string phone;
-		public string address;
-		public int prn;
-		public string laptop;
-	}
-
-	public class ResourceUserInfo
-	{
-		public string name;
-		public string phone;
-		public string address;
-		public int prn;
-		public string reource;
-	}
-
-	public class TotalYearsCompletedTableInfo
-	{
-		public int employeeID;
-		public string name;
-		public int salary;
-		public int age;
-		public int years;
-	}
+	
 }
 
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
+using MyStore.Pages.Models;
 
 namespace MyStore.Pages.Employee
 {

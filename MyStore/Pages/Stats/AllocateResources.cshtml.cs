@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyStore.Pages.Employee;
 using System.Data.SqlClient;
+using MyStore.Pages.Models;
 
 namespace MyStore.Pages.Stats
 {
@@ -73,11 +74,5 @@ namespace MyStore.Pages.Stats
 
     }
 
-    public class ResourceAllocationInfo
-    {
-        public int employeeID;
-        public int prn;
-        public string mouse;
-        public string laptop;
-    }
+    
 }

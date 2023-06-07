@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Security.Cryptography.X509Certificates;
-
 using System.Data;
 using System.Configuration;
+using MyStore.Pages.Models;
 
 namespace MyStore.Pages.Stats
 {

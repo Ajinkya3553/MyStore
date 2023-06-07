@@ -1,0 +1,71 @@
+﻿@page
+@model MyStore.Pages.Stats.ExecuteQueryModel
+
+@{
+	int index = 0;
+}
+
+<h2 class="text-center">Execute Your Query</h2>
+<hr />
+
+<h3 class="mt-4 mb-2">Sample Employee Table</h3>
+<table class="table mt-2 table-bordered">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Employee ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Address</th>
+			<th>Salary</th>
+			<th>Created at</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.listEmployeesInfo)
+		{
+			index++;
+			<tr>
+				<td>@index</td>
+				<td>@item.employeeID</td>
+				<td>@item.name</td>
+				<td>@item.email</td>
+				<td>@item.phone</td>
+				<td>@item.address</td>
+				<td>@item.salary</td>
+				<td>@item.created_at</td>
+			</tr>
+		}
+		@{
+			index = 0;
+		}
+	</tbody>
+</table>
+
+<h3 class="mt-4 mb-2">Sample Employee Resources Table</h3>
+<table class="table mt-2 table-bordered">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Employee ID</th>
+			<th>PRN</th>
+			<th>Laptop</th>
+			<th>Mouse</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		@foreach (var item in Model.listSampleEmployeeResources)
+		{
+			index++;
+			<tr>
+				<td>@index</td>
+				<td>@item.employeeID</td>
+				<td>@item.prn</td>
+				<td>@item.laptop</td>
+				<td>@item.mouse</td>
+			</tr>
+		}
+	</tbody>
+</table>
